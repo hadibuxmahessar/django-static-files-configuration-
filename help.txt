@@ -1,0 +1,15 @@
+step1:
+from django.conf.urls.static import static
+from django.conf import settings
+
+step2:
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)# include static files when serving live
+
+urlpatterns += [
+    path('home/', include('django.contrib.auth.urls')),
+]
+
+step3:
+python manage.py collectstatic
